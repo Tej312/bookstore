@@ -1,11 +1,17 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { colors } from "../../constant/constant";
+import background from "../../assets/images/download.jpeg";
 
 const productStyle = makeStyles((theme) => ({
   productWrapper: {
     padding: "20px 0 20px 0",
-    backgroundColor:colors.grayBg,
-
+    // backgroundColor:colors.grayBg,
+    "& .main": {
+      padding: "50px 20px 300px 20px ",
+      backgroundImage: `url(${background})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "1700px 600px",
+    },
     "& .end": {
       display:"flex",
       justifyContent:"center"

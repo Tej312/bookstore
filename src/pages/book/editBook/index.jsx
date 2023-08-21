@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { editStyle } from "./style";
 import * as Yup from "yup";
 import {
-  
   TextField,
   Button,
   Input,
@@ -107,204 +106,209 @@ const EditBook = () => {
 
   return (
     <div className={classes.editWrapper}>
-      <h1 className="head">Edit Book</h1>
-      <div className="container">
-        <Formik
-          initialValues={initialValueState}
-          validationSchema={validationSchema}
-          enableReinitialize={true}
-          onSubmit={onSubmit}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
-            handleSubmit,
-            setValues,
-            setFieldError,
-            setFieldValue,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <table>
-                <tr>
-                  <td>Book Name</td>
-                  <td>
-                    {" "}
-                    <div className="form-col">
-                      <TextField
-                        id="first-name"
-                        name="name"
-                        variant="outlined"
-                        inputProps={{ className: "small" }}
-                        value={values.name}
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                      />
-                      <ValidationErrorMessage
-                        message={errors.name}
-                        touched={touched.name}
-                      />
-                    </div>
-                  </td>
-                  <td></td>
-                  <td>Prise</td>
-                  <td>
-                    <div className="form-col">
-                      <TextField
-                        type={"number"}
-                        id="price"
-                        name="price"
-                        variant="outlined"
-                        inputProps={{ className: "small" }}
-                        value={values.price}
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                      />
-                      <ValidationErrorMessage
-                        message={errors.price}
-                        touched={touched.price}
-                      />
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Category</td>
-                  <td>
-                    <div className="form-col">
-                      <FormControl
-                        className="dropdown-wrapper"
-                        variant="outlined"
-                      >
-                        <Select
-                          name={"categoryId"}
-                          id={"category"}
+      <div className="main">
+        <h1 className="head">Edit Book</h1>
+        <div className="container">
+          <Formik
+            initialValues={initialValueState}
+            validationSchema={validationSchema}
+            enableReinitialize={true}
+            onSubmit={onSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              setValues,
+              setFieldError,
+              setFieldValue,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <table>
+                  <tr>
+                    <td>Book Name</td>
+                    <td>
+                      {" "}
+                      <div className="form-col">
+                        <TextField
+                          id="first-name"
+                          name="name"
+                          variant="outlined"
+                          inputProps={{ className: "small" }}
+                          value={values.name}
+                          onBlur={handleBlur}
                           onChange={handleChange}
-                          className={materialClasses.customSelect}
-                          MenuProps={{
-                            classes: { paper: materialClasses.customSelect },
-                          }}
-                          value={values.categoryId}
+                        />
+                        <ValidationErrorMessage
+                          message={errors.name}
+                          touched={touched.name}
+                        />
+                      </div>
+                    </td>
+                    <td></td>
+                    <td>Prise</td>
+                    <td>
+                      <div className="form-col">
+                        <TextField
+                          type={"number"}
+                          id="price"
+                          name="price"
+                          variant="outlined"
+                          inputProps={{ className: "small" }}
+                          value={values.price}
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                        />
+                        <ValidationErrorMessage
+                          message={errors.price}
+                          touched={touched.price}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Category</td>
+                    <td>
+                      <div className="form-col">
+                        <FormControl
+                          className="dropdown-wrapper"
+                          variant="outlined"
                         >
-                          {categories?.map((rl) => (
-                            <MenuItem value={rl.id} key={"category" + rl.id}>
-                              {rl.name}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                      <ValidationErrorMessage
-                        message={errors.categoryId}
-                        touched={touched.categoryId}
-                      />
-                    </div>
-                  </td>
-                  <td></td>
-                  <td>Image</td>
-                  <td>
-                    <div className="form-col">
-                      {!values.base64image && (
-                        <>
-                          <label
-                            htmlFor="contained-button-file"
-                            className="file-upload-btn"
-                          >
-                            <Input
-                              id="contained-button-file"
-                              type="file"
-                              inputProps={{ className: "small" }}
-                              onBlur={handleBlur}
-                              onChange={(e) => {
-                                onSelectFile(e, setFieldValue, setFieldError);
-                              }}
-                            />
-                            <Button
-                              variant="contained"
-                              component="span"
-                              className="btn pink-btn"
-                            >
-                              Upload
-                            </Button>
-                          </label>
-                          <ValidationErrorMessage
-                            message={errors.base64image}
-                            touched={touched.base64image}
-                          />
-                        </>
-                      )}
-                      {values.base64image && (
-                        <div className="uploaded-file-name">
-                          <em>
-                            <img src={values.base64image} alt="" />
-                          </em>
-                          image{" "}
-                          <span
-                            onClick={() => {
-                              setFieldValue("base64image", "");
+                          <Select
+                            name={"categoryId"}
+                            id={"category"}
+                            onChange={handleChange}
+                            className={materialClasses.customSelect}
+                            MenuProps={{
+                              classes: { paper: materialClasses.customSelect },
                             }}
+                            value={values.categoryId}
                           >
-                            <Button
-                              color="secondary"
-                              variant="contained"
-                              className="main-x-btn"
+                            {categories?.map((rl) => (
+                              <MenuItem value={rl.id} key={"category" + rl.id}>
+                                {rl.name}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                        <ValidationErrorMessage
+                          message={errors.categoryId}
+                          touched={touched.categoryId}
+                        />
+                      </div>
+                    </td>
+                    <td></td>
+                    <td>Image</td>
+                    <td>
+                      <div className="form-col">
+                        {!values.base64image && (
+                          <>
+                            <label
+                              htmlFor="contained-button-file"
+                              className="file-upload-btn"
                             >
-                              upload
-                            </Button>
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Description</td>
-                  <td>
-                    <div className="form-col full-width description">
-                      <TextField
-                        id="description"
-                        name="description"
-                        variant="outlined"
-                        value={values.description}
-                        multiline
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                      />
-                      <ValidationErrorMessage
-                        message={errors.description}
-                        touched={touched.description}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              </table>
-              <div className="btn-wrapper">
-                <Button
-                  className="green-btn btn"
-                  variant="contained"
-                  type="submit"
-                  color="secondary"
-                  disableElevation
-                >
-                  Save
-                </Button>
+                              <Input
+                                id="contained-button-file"
+                                type="file"
+                                inputProps={{ className: "small" }}
+                                onBlur={handleBlur}
+                                onChange={(e) => {
+                                  onSelectFile(e, setFieldValue, setFieldError);
+                                }}
+                              />
+                              <Button
+                                variant="contained"
+                                component="span"
+                                className="btn pink-btn"
+                              >
+                                Upload
+                              </Button>
+                            </label>
+                            <ValidationErrorMessage
+                              message={errors.base64image}
+                              touched={touched.base64image}
+                            />
+                          </>
+                        )}
+                        {values.base64image && (
+                          <div className="uploaded-file-name">
+                            <em>
+                              <img
+                                src={values.base64image}
+                                alt=""
+                                height={150}
+                              />
+                            </em>
+                            <span
+                              onClick={() => {
+                                setFieldValue("base64image", "");
+                              }}
+                            >
+                              <Button
+                                color="secondary"
+                                variant="contained"
+                                className="main-x-btn"
+                              >
+                                upload
+                              </Button>
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                    <td>
+                      <div className="form-col full-width description">
+                        <TextField
+                          id="description"
+                          name="description"
+                          variant="outlined"
+                          value={values.description}
+                          multiline
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                        />
+                        <ValidationErrorMessage
+                          message={errors.description}
+                          touched={touched.description}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <div className="btn-wrapper">
+                  <Button
+                    className="green-btn btn"
+                    variant="contained"
+                    type="submit"
+                    color="secondary"
+                    disableElevation
+                  >
+                    Save
+                  </Button>
 
-                <Button
-                  className="pink-btn btn"
-                  variant="contained"
-                  type="button"
-                  color="secondary"
-                  disableElevation
-                  onClick={() => {
-                    navigate("/book");
-                  }}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </form>
-          )}
-        </Formik>
+                  <Button
+                    className="pink-btn btn"
+                    variant="contained"
+                    type="button"
+                    color="secondary"
+                    disableElevation
+                    onClick={() => {
+                      navigate("/book");
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            )}
+          </Formik>
+        </div>
       </div>
     </div>
   );

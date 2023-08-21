@@ -5,7 +5,7 @@ import { colors } from "../../constant/constant";
 const headerStyle = makeStyles((theme) => ({
   headerWrapper: {
     "& .site-header": {
-      backgroundColor: colors.white,
+      backgroundColor: "#C1E3F2",
       boxShadow: "none",
       "& .top-header": {
         backgroundColor: colors.primary,
@@ -69,6 +69,7 @@ const headerStyle = makeStyles((theme) => ({
                 top: 0,
                 right: "10px",
                 zIndex: "1",
+                color:"white"
               },
 
               "& .top-nav-bar": {
@@ -184,7 +185,8 @@ const headerStyle = makeStyles((theme) => ({
       "& .header-search-wrapper": {
         position: "relative",
         zIndex: "2",
-        backgroundColor: colors.lightTextColor,
+        // backgroundColor: colors.lightTextColor,
+        backgroundColor: "#C8ECFF",
         padding: "10px 0",
         "& .header-search-outer": {
           display: "flex",

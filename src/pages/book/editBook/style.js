@@ -1,19 +1,23 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { colors } from "../../../constant/constant";
+import background from "../../../assets/images/download.jpeg";
 
 const editStyle = makeStyles((theme) => ({
   editWrapper: {
-    backgroundColor: "#F1F9FF",
-    
+    "& .main": {
+      padding: "50px 20px 350px 20px ",
+      backgroundImage: `url(${background})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "1700px auto",
+    },
 
     "& .container": {
-      backgroundColor: "#D5F5FF",
-      border: "5px solid #006685",
+      border: "3px solid #006685",
       borderRadius: "25px",
-            display: "flex",
+      display: "flex",
       justifyContent: "center",
       padding: "20px 20px 20px 20px",
-      margin:"0 20% 0 20%"
+      margin: "0 20% 0 20%",
     },
     "& .head": {
       display: "flex",
@@ -65,13 +69,14 @@ const editStyle = makeStyles((theme) => ({
         "& .uploaded-file-name": {
           marginBottom: "35px",
           paddingTop: "28px",
+
           "& .main-x-btn": {
             backgroundColor: "#6EABD3",
           },
 
           "& em": {
-            height: "30px",
-            width: "30px",
+            height: "5px",
+            width: "5px",
             display: "inline-block",
             marginRight: "10px",
           },

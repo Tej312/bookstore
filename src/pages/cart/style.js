@@ -1,14 +1,22 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { colors } from "../../constant/constant";
+import background from "../../assets/images/download.jpeg";
 
 const cartStyle = makeStyles((theme) => ({
   cartWrapper: {
-    maxWidth: "700px",
-    padding: "0 50px 0 50px",
-    margin: "10px auto",
-    backgroundColor: "#F1F9FF",
-    border: "2px solid #00A4D6",
-    borderRadius: "8px",
+    "& .container": {
+      border: "2px solid #004777",
+      maxWidth: "700px",
+      padding: "0 50px 0 50px",
+      margin: "10px 0 0 40%",
+      borderRadius: "8px",
+    },
+    "& .main": {
+      padding: "30px 20px 90px 20px ",
+      backgroundImage: `url(${background})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "contain",
+    },
     "& .btn-wrapper": {
       display: "flex",
       justifyContent: "center",

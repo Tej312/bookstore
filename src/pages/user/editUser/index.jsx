@@ -101,120 +101,122 @@ const EditUser = () => {
   };
   return (
     <div className={classes.editUserWrapper}>
-      <div className="container">
-        <h1 className="head">Edit User</h1>
-        <Formik
-          initialValues={initialValueState}
-          validationSchema={validationSchema}
-          enableReinitialize={true}
-          onSubmit={onSubmit}
-          validator={() => ({})}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
-            handleSubmit,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <div className="form-row-wrapper">
-                <div className="form-col">
-                  <TextField
-                    id="first-name"
-                    name="firstName"
-                    label="First Name *"
-                    variant="outlined"
-                    inputProps={{ className: "small" }}
-                    value={values.firstName}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                  />
-                  {errors.firstName ? errors.firstName : ""}
-                </div>
-                <div className="form-col">
-                  <TextField
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    id="last-name"
-                    name="lastName"
-                    label="Last Name *"
-                    value={values.lastName}
-                    variant="outlined"
-                    inputProps={{ className: "small" }}
-                  />
-                  {errors.lastName ? errors.lastName : ""}
-                </div>
-                <div className="form-col">
-                  <TextField
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    id="email"
-                    name="email"
-                    label="Email *"
-                    value={values.email}
-                    variant="outlined"
-                    inputProps={{ className: "small" }}
-                  />
-                  {errors.email ? errors.email : ""}
-                </div>
-                {values.id !== authContext.user.id && (
+      <div className="main">
+        <div className="container">
+          <h1 className="head">Edit User</h1>
+          <Formik
+            initialValues={initialValueState}
+            validationSchema={validationSchema}
+            enableReinitialize={true}
+            onSubmit={onSubmit}
+            validator={() => ({})}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <div className="form-row-wrapper">
                   <div className="form-col">
-                    <FormControl
-                      className="dropdown-wrapper"
+                    <TextField
+                      id="first-name"
+                      name="firstName"
+                      label="First Name *"
                       variant="outlined"
-                      disabled={values.id === authContext.user.id}
-                    >
-                      <InputLabel htmlFor="select">Roles</InputLabel>
-                      <Select
-                        name="roleId"
-                        id={"roleId"}
-                        onChange={handleChange}
-                        disabled={values.id === authContext.user.id}
-                        className={materialClasses.customSelect}
-                        MenuProps={{
-                          classes: { paper: materialClasses.customSelect },
-                        }}
-                        value={values.roleId}
-                      >
-                        {roles.length > 0 &&
-                          roles.map((role) => (
-                            <MenuItem value={role.id} key={"name" + role.id}>
-                              {role.name}
-                            </MenuItem>
-                          ))}
-                      </Select>
-                    </FormControl>
+                      inputProps={{ className: "small" }}
+                      value={values.firstName}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                    />
+                    {errors.firstName ? errors.firstName : ""}
                   </div>
-                )}
-              </div>
-              <div className="btn-wrapper">
-                <Button
-                  className="green-btn btn"
-                  variant="contained"
-                  type="submit"
-                  color="secondary"
-                  disableElevation
-                >
-                  Save
-                </Button>
-                <Button
-                  className="pink-btn btn"
-                  variant="contained"
-                  type="button"
-                  color="secondary"
-                  disableElevation
-                  onClick={() => {
-                    navigate("/user");
-                  }}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </form>
-          )}
-        </Formik>
+                  <div className="form-col">
+                    <TextField
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      id="last-name"
+                      name="lastName"
+                      label="Last Name *"
+                      value={values.lastName}
+                      variant="outlined"
+                      inputProps={{ className: "small" }}
+                    />
+                    {errors.lastName ? errors.lastName : ""}
+                  </div>
+                  <div className="form-col">
+                    <TextField
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      id="email"
+                      name="email"
+                      label="Email *"
+                      value={values.email}
+                      variant="outlined"
+                      inputProps={{ className: "small" }}
+                    />
+                    {errors.email ? errors.email : ""}
+                  </div>
+                  {values.id !== authContext.user.id && (
+                    <div className="form-col">
+                      <FormControl
+                        className="role"
+                        variant="outlined"
+                        disabled={values.id === authContext.user.id}
+                      >
+                        <InputLabel htmlFor="select">Roles</InputLabel>
+                        <Select
+                          name="roleId"
+                          id={"roleId"}
+                          onChange={handleChange}
+                          disabled={values.id === authContext.user.id}
+                          className={materialClasses.customSelect}
+                          MenuProps={{
+                            classes: { paper: materialClasses.customSelect },
+                          }}
+                          value={values.roleId}
+                        >
+                          {roles.length > 0 &&
+                            roles.map((role) => (
+                              <MenuItem value={role.id} key={"name" + role.id}>
+                                {role.name}
+                              </MenuItem>
+                            ))}
+                        </Select>
+                      </FormControl>
+                    </div>
+                  )}
+                </div>
+                <div className="btn-wrapper">
+                  <Button
+                    className="green-btn btn"
+                    variant="contained"
+                    type="submit"
+                    color="secondary"
+                    disableElevation
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    className="pink-btn btn"
+                    variant="contained"
+                    type="button"
+                    color="secondary"
+                    disableElevation
+                    onClick={() => {
+                      navigate("/user");
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            )}
+          </Formik>
+        </div>
       </div>
     </div>
   );

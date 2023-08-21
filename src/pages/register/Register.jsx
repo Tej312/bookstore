@@ -53,136 +53,140 @@ const Register = () => {
   return (
     <>
       <div className={classes.registerWrapper}>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
-          {({ values, errors, handleChange, handleSubmit, touched }) => {
-            return (
-              <>
-                <div className="container">
-                  <h1 className="head">Registration form</h1>
-                  <form onSubmit={handleSubmit}>
-                    <table className="table">
-                      <tr>
-                        <td className="hi">First Name</td>
-                        <td>
-                          <TextField
-                            name="firstName"
-                            onChange={handleChange}
-                            variant="outlined"
-                            label="Enter your first name"
-                          />
-                          {errors.firstName ? errors.firstName : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Last Name</td>
-                        <td>
-                          <TextField
-                            name="lastName"
-                            onChange={handleChange}
-                            variant="outlined"
-                            label="Enter your last name"
-                          />
-                          {errors.lastName ? errors.lastName : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Role Id</td>
-                        <td>
-                          <div className="form-col">
-                            <FormControl
-                              className="dropdown-wrapper"
+        <div className="main">
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            {({ values, errors, handleChange, handleSubmit, touched }) => {
+              return (
+                <>
+                  <div className="container">
+                    <h1 className="head">Registration form</h1>
+                    <form onSubmit={handleSubmit}>
+                      <table className="table">
+                        <tr>
+                          <td className="hi">First Name</td>
+                          <td>
+                            <TextField
+                              name="firstName"
+                              onChange={handleChange}
                               variant="outlined"
-                            >
-                              <InputLabel htmlFor="select">Roles</InputLabel>
-                              <Select
-                                name="roleId"
-                                id={"roleId"}
-                                inputProps={{ className: "small" }}
-                                onChange={handleChange}
-                                className={materialClasses.customSelect}
-                                MenuProps={{
-                                  classes: {
-                                    paper: materialClasses.customSelect,
-                                  },
-                                }}
-                                value={values.roleId}
+                              label="Enter your first name"
+                            />
+                            {errors.firstName ? errors.firstName : ""}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Last Name</td>
+                          <td>
+                            <TextField
+                              name="lastName"
+                              onChange={handleChange}
+                              variant="outlined"
+                              label="Enter your last name"
+                            />
+                            {errors.lastName ? errors.lastName : ""}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Role Id</td>
+                          <td>
+                            <div>
+                              <FormControl
+                                className="dropdown-wrapper"
+                                variant="outlined"
                               >
-                                {roleList.length > 0 &&
-                                  roleList.map((role) => (
-                                    <MenuItem
-                                      value={role.id}
-                                      key={"name" + role.id}
-                                    >
-                                      {role.name}
-                                    </MenuItem>
-                                  ))}
-                              </Select>
-                            </FormControl>
-                          </div>
-                          {errors.roleId ? errors.roleId : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td>
-                          <TextField
-                            name="email"
-                            onChange={handleChange}
-                            variant="outlined"
-                            label="Enter your Email"
-                          />
-                          {errors.email ? errors.email : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Password</td>
-                        <td>
-                          <TextField
-                            name="password"
-                            onChange={handleChange}
-                            variant="outlined"
-                            label="Enter your Password"
-                            type="password"
-                          />
-                          {errors.password ? errors.password : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Confirm password</td>
-                        <td>
-                          <TextField
-                            name="confirmPassword"
-                            onChange={handleChange}
-                            variant="outlined"
-                            label="Confirm Password"
-                            type="password"
-                          />
-                          {errors.confirmPassword ? errors.confirmPassword : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colSpan={2}>
-                          <Button
-                            type="submit"
-                            color="primary"
-                            variant="contained"
-                            className="rbutton"
-                          >
-                            Register
-                          </Button>
-                        </td>
-                      </tr>
-                    </table>
-                  </form>
-                </div>
-              </>
-            );
-          }}
-        </Formik>
+                                <InputLabel htmlFor="select">Roles</InputLabel>
+                                <Select
+                                  name="roleId"
+                                  id={"roleId"}
+                                  inputProps={{ className: "small" }}
+                                  onChange={handleChange}
+                                  className={materialClasses.customSelect}
+                                  MenuProps={{
+                                    classes: {
+                                      paper: materialClasses.customSelect,
+                                    },
+                                  }}
+                                  value={values.roleId}
+                                >
+                                  {roleList.length > 0 &&
+                                    roleList.map((role) => (
+                                      <MenuItem
+                                        value={role.id}
+                                        key={"name" + role.id}
+                                      >
+                                        {role.name}
+                                      </MenuItem>
+                                    ))}
+                                </Select>
+                              </FormControl>
+                            </div>
+                            {errors.roleId ? errors.roleId : ""}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td>
+                            <TextField
+                              name="email"
+                              onChange={handleChange}
+                              variant="outlined"
+                              label="Enter your Email"
+                            />
+                            {errors.email ? errors.email : ""}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Password</td>
+                          <td>
+                            <TextField
+                              name="password"
+                              onChange={handleChange}
+                              variant="outlined"
+                              label="Enter your Password"
+                              type="password"
+                            />
+                            {errors.password ? errors.password : ""}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Confirm password</td>
+                          <td>
+                            <TextField
+                              name="confirmPassword"
+                              onChange={handleChange}
+                              variant="outlined"
+                              label="Confirm Password"
+                              type="password"
+                            />
+                            {errors.confirmPassword
+                              ? errors.confirmPassword
+                              : ""}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan={2}>
+                            <Button
+                              type="submit"
+                              color="primary"
+                              variant="contained"
+                              className="rbutton"
+                            >
+                              Register
+                            </Button>
+                          </td>
+                        </tr>
+                      </table>
+                    </form>
+                  </div>
+                </>
+              );
+            }}
+          </Formik>
+        </div>
       </div>
     </>
   );

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../utils/enum";
 import { useAuthContext } from "../../context/auth";
+import ValidationErrorMessage from "../../component/ValidateErrorMessage";
 const Login = () => {
   const authContext = useAuthContext();
   const classes = LoginStyle();
@@ -34,75 +35,88 @@ const Login = () => {
   return (
     <>
       <div className={classes.loginWrapper}>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
-          {({ values, errors, handleChange, handleSubmit, touched }) => {
-            return (
-              <>
-                <div className="container">
-                  <h1 className="head">LOGIN</h1>
-                  <form onSubmit={handleSubmit}>
-                    <table className="table">
-                      <tr>
-                        <td>Email</td>
-                        <td>
-                          <TextField
-                            name="email"
-                            onChange={handleChange}
-                            variant="outlined"
-                            label="Enter your Email"
-                          />
-                          {errors.email ? errors.email : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Password</td>
-                        <td>
-                          <TextField
-                            name="password"
-                            onChange={handleChange}
-                            variant="outlined"
-                            label="Enter your Password"
-                            type="password"
-                          />
+        <div className="main">
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            {({ values, errors, handleChange, handleSubmit, touched }) => {
+              return (
+                <>
+                  <div className="container">
+                    <h1 className="head">LOGIN</h1>
+                    <form onSubmit={handleSubmit}>
+                      <table className="table">
+                        <tr>
+                          <td>Email</td>
+                          <td>
+                            <div className="form-col">
+                              <TextField
+                                name="email"
+                                onChange={handleChange}
+                                variant="outlined"
+                                label="Enter your Email"
+                              />
+                              <ValidationErrorMessage
+                                message={errors.email}
+                                touched={touched.email}
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Password</td>
+                          <td>
+                            <div className="form-col">
+                              <TextField
+                                name="password"
+                                onChange={handleChange}
+                                variant="outlined"
+                                label="Enter your Password"
+                                type="password"
+                              />
+                              <ValidationErrorMessage
+                                message={errors.password}
+                                touched={touched.password}
+                              />
+                            </div>
 
-                          {errors.password ? errors.password : ""}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colSpan={2}>
-                          <Button
-                            type="submit"
-                            color="primary"
-                            variant="contained"
-                            className="button"
-                            disableElevation
-                            onClick={handleSubmit}
-                          >
-                            Login
-                          </Button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colSpan={2}>
-                          <h4>
-                            For create a new account{" "}
-                            <NavLink to={RoutePaths.Register}>
-                              Click here!
-                            </NavLink>{" "}
-                          </h4>
-                        </td>
-                      </tr>
-                    </table>
-                  </form>
-                </div>
-              </>
-            );
-          }}
-        </Formik>
+                            {/* {errors.password ? errors.password : ""} */}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan={2}>
+                            <Button
+                              type="submit"
+                              color="secondary"
+                              variant="contained"
+                              className="button"
+                              disableElevation
+                              onClick={handleSubmit}
+                            >
+                              Login
+                            </Button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan={2}>
+                            <h4>
+                              For create a new account{" "}
+                              <NavLink to={RoutePaths.Register}>
+                                Click here!
+                              </NavLink>{" "}
+                            </h4>
+                          </td>
+                        </tr>
+                      </table>
+                    </form>
+                  </div>
+                </>
+              );
+            }}
+          </Formik>
+        </div>
       </div>
     </>
   );

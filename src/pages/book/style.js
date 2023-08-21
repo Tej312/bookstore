@@ -1,14 +1,20 @@
 import { makeStyles } from "@material-ui/core/styles";
+import background from "../../assets/images/download.jpeg";
 
 const productStyle = makeStyles((theme) => ({
   productWrapper: {
     padding: "42px 0 100% 0",
     "& .container": {
-      border: "5px solid #000",
+      border: "3px solid #000",
       margin: "0 20px 0 20px",
       borderRadius: "10px",
       padding: "0 10px 20px 10px",
-      backgroundColor: "#EEF8FF",
+    },
+    "& .main": {
+      padding: "50px 20px 300px 20px ",
+      backgroundImage: `url(${background})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "1700px 600px",
     },
     "& .raw-per-page": {
       display: "flex",
@@ -18,7 +24,7 @@ const productStyle = makeStyles((theme) => ({
       display: "flex",
       justifyContent: "center",
       textDecoration: "underline",
-      color: "#00A4D6",
+      color: "black",
     },
 
     "& .btn-wrapper": {

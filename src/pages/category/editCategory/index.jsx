@@ -43,64 +43,66 @@ const EditCategory = () => {
   };
   return (
     <div className={classes.editWrapper}>
-      <div className="container">
-        <h1 className="head">Add New Category</h1>
-        <Formik
-          initialValues={initialValueState}
-          validationSchema={validationSchema}
-          enableReinitialize={true}
-          onSubmit={onSubmit}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
-            handleSubmit,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <div className="form-row-wrapper">
-                <div className="form-col">
-                  <TextField
-                    id="first-name"
-                    name="name"
-                    label="Category Name *"
-                    variant="outlined"
-                    inputProps={{ className: "small" }}
-                    value={values.name}
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                  />
-                  {errors.name ? errors.name : ""}
+      <div className="main">
+        <div className="container">
+          <h1 className="head">Add New Category</h1>
+          <Formik
+            initialValues={initialValueState}
+            validationSchema={validationSchema}
+            enableReinitialize={true}
+            onSubmit={onSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <div className="form-row-wrapper">
+                  <div className="form-col">
+                    <TextField
+                      id="first-name"
+                      name="name"
+                      label="Category Name *"
+                      variant="outlined"
+                      inputProps={{ className: "small" }}
+                      value={values.name}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                    />
+                    {errors.name ? errors.name : ""}
+                  </div>
                 </div>
-              </div>
-              <div className="btn-wrapper">
-                <Button
-                  className="green-btn btn"
-                  variant="contained"
-                  type="submit"
-                  color="secondary"
-                  disableElevation
-                >
-                  Save
-                </Button>
-                <Button
-                  className="pink-btn btn"
-                  variant="contained"
-                  type="button"
-                  color="secondary"
-                  disableElevation
-                  onClick={() => {
-                    navigate("/category");
-                  }}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </form>
-          )}
-        </Formik>
+                <div className="btn-wrapper">
+                  <Button
+                    className="green-btn btn"
+                    variant="contained"
+                    type="submit"
+                    color="secondary"
+                    disableElevation
+                  >
+                    Save
+                  </Button>
+                  <Button
+                    className="pink-btn btn"
+                    variant="contained"
+                    type="button"
+                    color="secondary"
+                    disableElevation
+                    onClick={() => {
+                      navigate("/category");
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            )}
+          </Formik>
+        </div>
       </div>
     </div>
   );

@@ -1,17 +1,23 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { colors } from "../../../constant/constant";
+import background from "../../../assets/images/download.jpeg";
+
 
 const editStyle = makeStyles((theme) => ({
   editWrapper: {
-    padding: "42px 0 100% 0",
-    backgroundColor: "#F1F9FF",
-
+   
+    
     "& .container": {
       padding: "0 0 20px 0",
       margin: "0 30% 0 33%",
-      backgroundColor: colors.grayBg,
-      border: "5px solid #006685",
+      border: "3px solid #006685",
       borderRadius: "25px",
+    },
+    "& .main": {
+      padding: "50px 20px 300px 20px ",
+      backgroundImage: `url(${background})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "1700px 600px",
     },
     "& .head": {
       margin: "35px 0 35px 0",

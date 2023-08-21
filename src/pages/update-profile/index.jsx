@@ -56,138 +56,140 @@ const UpdateProfile = () => {
 
   return (
     <div className={classes.editWrapper}>
-      <div>
-        <h1 className="head">Update Profile</h1>
-        <Formik
-          initialValues={initialValueState}
-          validationSchema={validationSchema}
-          enableReinitialize={true}
-          onSubmit={onSubmit}
-          validator={() => ({})}
-        >
-          {({
-            values,
-            errors,
+      <div className="main">
+        <div className="container">
+          <h1 className="head">Update Profile</h1>
+          <Formik
+            initialValues={initialValueState}
+            validationSchema={validationSchema}
+            enableReinitialize={true}
+            onSubmit={onSubmit}
+            validator={() => ({})}
+          >
+            {({
+              values,
+              errors,
 
-            handleBlur,
-            handleChange,
-            handleSubmit,
-          }) => (
-            <>
-              <form action="" onSubmit={handleSubmit}>
-                <div className="form-row-wrapper">
-                  <table>
-                    <tr>
-                      <td>
-                        <div className="form-col">
-                          <TextField
-                            id="first-name"
-                            name="firstName"
-                            label="First Name *"
-                            variant="outlined"
-                            value={values.firstName}
-                            inputProps={{ className: "small" }}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {errors.firstName ? errors.firstName : ""}
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-col">
-                          <TextField
-                            id="last-name"
-                            name="lastName"
-                            label="Last Name *"
-                            variant="outlined"
-                            value={values.lastName}
-                            inputProps={{ className: "small" }}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {errors.lastName ? errors.lastName : ""}
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div className="form-col">
-                          <TextField
-                            id="email"
-                            name="email"
-                            label="Email *"
-                            variant="outlined"
-                            value={values.email}
-                            inputProps={{ className: "small" }}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          />
-                          {errors.email ? errors.email : ""}
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-col">
-                          <TextField
-                            id="newPassword"
-                            name="newPassword"
-                            label="New Password "
-                            variant="outlined"
-                            value={values.newPassword}
-                            inputProps={{ className: "small" }}
-                            onChange={(e) => {
-                              e.target.value !== ""
-                                ? setUpdatePassword(true)
-                                : setUpdatePassword(false);
-                              handleChange(e);
-                            }}
-                            onBlur={handleBlur}
-                          />
-                          {errors.newPassword ? errors.newPassword : ""}
-                        </div>
-                      </td>
-                    </tr>
-                    <div className="form-col">
-                      <TextField
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        label="Confirm Password "
-                        variant="outlined"
-                        value={values.confirmPassword}
-                        inputProps={{ className: "small" }}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {errors.confirmPassword ? errors.confirmPassword : ""}
-                    </div>
-                  </table>
-                </div>
-                <div className="btn-wrapper">
-                  <Button
-                    className="pink-btn btn"
-                    variant="contained"
-                    type="submit"
-                    color="secondary"
-                    disableElevation
-                  >
-                    Save
-                  </Button>
-                  <Button
-                    className="pink-btn btn"
-                    variant="contained"
-                    type="submit"
-                    color="secondary"
-                    disableElevation
-                    onClick={() => {
-                      navigate("/");
-                    }}
-                  >
-                    Cancel
-                  </Button>
-                </div>
-              </form>
-            </>
-          )}
-        </Formik>
+              handleBlur,
+              handleChange,
+              handleSubmit,
+            }) => (
+              <>
+                <form action="" onSubmit={handleSubmit}>
+                  <div className="form-row-wrapper">
+                    <table>
+                      <tr>
+                        <td>
+                          <div className="form-col">
+                            <TextField
+                              id="first-name"
+                              name="firstName"
+                              label="First Name *"
+                              variant="outlined"
+                              value={values.firstName}
+                              inputProps={{ className: "small" }}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {errors.firstName ? errors.firstName : ""}
+                          </div>
+                        </td>
+                        <td>
+                          <div className="form-col">
+                            <TextField
+                              id="last-name"
+                              name="lastName"
+                              label="Last Name *"
+                              variant="outlined"
+                              value={values.lastName}
+                              inputProps={{ className: "small" }}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {errors.lastName ? errors.lastName : ""}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="form-col">
+                            <TextField
+                              id="email"
+                              name="email"
+                              label="Email *"
+                              variant="outlined"
+                              value={values.email}
+                              inputProps={{ className: "small" }}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                            {errors.email ? errors.email : ""}
+                          </div>
+                        </td>
+                        <td>
+                          <div className="form-col">
+                            <TextField
+                              id="newPassword"
+                              name="newPassword"
+                              label="New Password "
+                              variant="outlined"
+                              value={values.newPassword}
+                              inputProps={{ className: "small" }}
+                              onChange={(e) => {
+                                e.target.value !== ""
+                                  ? setUpdatePassword(true)
+                                  : setUpdatePassword(false);
+                                handleChange(e);
+                              }}
+                              onBlur={handleBlur}
+                            />
+                            {errors.newPassword ? errors.newPassword : ""}
+                          </div>
+                        </td>
+                      </tr>
+                      <div className="form-col">
+                        <TextField
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          label="Confirm Password "
+                          variant="outlined"
+                          value={values.confirmPassword}
+                          inputProps={{ className: "small" }}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {errors.confirmPassword ? errors.confirmPassword : ""}
+                      </div>
+                    </table>
+                  </div>
+                  <div className="btn-wrapper">
+                    <Button
+                      className="pink-btn btn"
+                      variant="contained"
+                      type="submit"
+                      color="secondary"
+                      disableElevation
+                    >
+                      Save
+                    </Button>
+                    <Button
+                      className="pink-btn btn"
+                      variant="contained"
+                      type="submit"
+                      color="secondary"
+                      disableElevation
+                      onClick={() => {
+                        navigate("/");
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </form>
+              </>
+            )}
+          </Formik>
+        </div>
       </div>
     </div>
   );
