@@ -28,6 +28,5 @@ const App = () => {
     </>
   );
 };
-//Patel Tej Dasharathbhai
-//hrllooidjvknjmdsj
+//changes to app.js file
 export default App;
